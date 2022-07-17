@@ -20,4 +20,8 @@ return [
     'view_manager' => [
         'display_exceptions' => true,
     ],
+    'db' => [
+        'username' => 'user',
+        'password' => '22222222'
+    ]
 ];

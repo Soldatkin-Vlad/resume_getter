@@ -12,6 +12,28 @@
  * file.
  */
 
+use Laminas\Db\Adapter;
+
 return [
-    // ...
+    'service_manager' => [
+        'abstract_factories' => [
+            Adapter\AdapterAbstractServiceFactory::class
+        ],
+        'factories' => [
+            Adapter\AdapterInterface::class => Adapter\AdapterServiceFactory::class,
+        ],
+        'aliases' => [
+            Adapter\Adapter::class => Adapter\AdapterServiceFactory::class
+        ]
+    ],
+    'view_manager' => [
+        'display_exceptions' => true,
+    ],
+    'db' => [
+        'driver' => 'Pdo',
+        'dsn' => 'mysql:dbname=resume;hostname=192.168.0.101',
+        'driver_options' => [
+            PDO::MYSSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+        ]
+    ]
 ];
